@@ -1,0 +1,48 @@
+stages:
+  - test
+  - data_quality
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+before_script:
+  - python --version
+  - pip install -r requirements.txt
+
+test_transformations:
+  stage: test
+  image: python:3.11
+  script:
+    - python -m compileall pipelines quality streaming app
+    - pytest -q
+
+data_quality:
+  stage: data_quality
+  image: python:3.11
+  script:
+    - python pipelines/load_raw_to_bronze.py
+    - python quality/validate_bronze.py
+
+build_services:
+  stage: build
+  image: docker:24
+  services:
+    - docker:24-dind
+  script:
+    - docker compose config
+    - echo "Docker Compose configuration is valid"
+
+deploy_test:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Deploy to test stand via SSH or Kubernetes"
+    - echo "Deployment simulation completed"
+  only:
+    - main
