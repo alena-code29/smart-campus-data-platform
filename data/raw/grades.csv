@@ -1,0 +1,17 @@
+student_id,course_name,grade,grade_date
+1001,Data Engineering,92,2026-02-10
+1001,Statistics,86,2026-02-15
+1002,Data Engineering,61,2026-02-10
+1002,Statistics,58,2026-02-15
+1003,Econometrics,77,2026-02-12
+1003,Statistics,81,2026-02-15
+1004,Econometrics,49,2026-02-12
+1004,Statistics,55,2026-02-15
+1005,Project Management,88,2026-02-11
+1005,Marketing,90,2026-02-17
+1006,Project Management,70,2026-02-11
+1006,Marketing,64,2026-02-17
+1007,Data Engineering,95,2026-02-10
+1007,Statistics,93,2026-02-15
+1008,Econometrics,66,2026-02-12
+1008,Statistics,72,2026-02-15
